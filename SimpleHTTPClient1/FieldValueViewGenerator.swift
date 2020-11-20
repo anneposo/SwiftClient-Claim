@@ -23,7 +23,7 @@ class FieldValueViewGenerator {
         //
         let lbl = UILabel()
         lbl.text = lblName
-        lbl.backgroundColor = UIColor.yellow
+        lbl.backgroundColor = UIColor.clear
         lbl.sizeToFit()
         stackView.addArrangedSubview(lbl)
         let val = UITextField()

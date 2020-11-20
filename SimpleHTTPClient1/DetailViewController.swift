@@ -14,16 +14,16 @@ class DetailViewController : ViewController {
         //
         detailScreenGenerator.vals[0].text = pObj.firstName
         detailScreenGenerator.vals[1].text = pObj.lastName
-        detailScreenGenerator.vals[2].text = pObj.ssn
+        //detailScreenGenerator.vals[2].text = pObj.ssn
         
         // Enable/Disable the button
         detailScreenGenerator.nextBtn.isEnabled = !pService.isLastEntry()
         // Change the brightness if needed
-        if detailScreenGenerator.nextBtn.isEnabled {
+        /*if detailScreenGenerator.nextBtn.isEnabled {
             detailScreenGenerator.nextBtn.backgroundColor = detailScreenGenerator.nextBtn.backgroundColor?.withAlphaComponent(1.0)
         } else {
             detailScreenGenerator.nextBtn.backgroundColor = detailScreenGenerator.nextBtn.backgroundColor?.withAlphaComponent(0.3)
-        }
+        }*/
         
     }
 

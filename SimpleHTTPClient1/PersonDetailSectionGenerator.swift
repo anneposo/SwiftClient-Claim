@@ -9,21 +9,6 @@
 import UIKit
 
 class PersonDetailSectionGenerator {
-/*    func generate() -> UIStackView {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 5
-        let lGenerator = LabelColumnGeneartor()
-        let lView = lGenerator.generate()
-        stackView.addArrangedSubview(lView)
-        let cGenerator = ValueColumnGenerator()
-        let vView = cGenerator.generate()
-        stackView.addArrangedSubview(vView)
-        lView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        vView.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        return stackView
-    }  */
     func generate() -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -32,13 +17,10 @@ class PersonDetailSectionGenerator {
         //
         var vGenerator : FieldValueViewGenerator!
         var sView : UIStackView!
-        vGenerator = FieldValueViewGenerator(n:"First Name ")
+        vGenerator = FieldValueViewGenerator(n:"Claim Title")
         sView = vGenerator.generate()
         stackView.addArrangedSubview(sView)
-        vGenerator = FieldValueViewGenerator(n:"Last Name")
-        sView = vGenerator.generate()
-        stackView.addArrangedSubview(sView)
-        vGenerator = FieldValueViewGenerator(n:"SSN")
+        vGenerator = FieldValueViewGenerator(n:"Date")
         sView = vGenerator.generate()
         stackView.addArrangedSubview(sView)
         return stackView
@@ -54,9 +36,10 @@ class buttonSectionGenerator {
         bStackView.distribution = .fill
         bStackView.spacing = 5
         let btn = UIButton()
-        btn.setTitle("Next", for: .normal)
+        btn.setTitle(" Add ", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
-        btn.backgroundColor = UIColor.red
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = UIColor.blue.cgColor
         bStackView.addArrangedSubview(btn)
         return bStackView
     }
@@ -99,7 +82,7 @@ class PersonDetailScreenGenerator {
         //
         for sv in buttonSecView.arrangedSubviews {
             let btn = sv as! UIButton
-            if btn.titleLabel?.text == "Next" {
+            if btn.titleLabel?.text == " Add " {
                 nextBtn = btn 
             }
         }
@@ -127,6 +110,8 @@ class PersonDetailScreenGenerator {
         let tCont = detailSecView.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor)
         let lCont = detailSecView.leadingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.leadingAnchor)
         let trCont = detailSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
+        detailSecView.layoutMargins = UIEdgeInsets(top: 40, left:20, bottom: 40, right: 20)
+        detailSecView.isLayoutMarginsRelativeArrangement = true
         tCont.isActive = true
         lCont.isActive = true
         trCont.isActive = true
@@ -136,6 +121,8 @@ class PersonDetailScreenGenerator {
         buttonSecView.translatesAutoresizingMaskIntoConstraints = false
         let tpConst = buttonSecView.topAnchor.constraint(equalTo: detailSecView.bottomAnchor)
         let trConst = buttonSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
+        buttonSecView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 20)
+        buttonSecView.isLayoutMarginsRelativeArrangement = true
         tpConst.isActive = true
         trConst.isActive = true
     }
