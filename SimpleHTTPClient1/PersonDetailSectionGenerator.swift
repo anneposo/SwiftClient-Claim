@@ -26,6 +26,20 @@ class TitleGenerator {
     }
 }
 
+class StatusSectionGenerator {
+    func generate() -> UIStackView {
+        let stStackView = UIStackView()
+        stStackView.axis = .horizontal
+        stStackView.distribution = .fill
+        stStackView.spacing = 5
+        //
+        let stLbl = UILabel()
+        stLbl.text = "Status: "
+        stStackView.addArrangedSubview(stLbl)
+        return stStackView
+    }
+}
+
 class PersonDetailSectionGenerator {
     func generate() -> UIStackView {
         let stackView = UIStackView()
@@ -69,6 +83,7 @@ class PersonDetailScreenGenerator {
     var titleSecView : UIStackView!
     var detailSecView : UIStackView!
     var buttonSecView : UIStackView!
+    var statusSecView : UIStackView!
     var vals : [UITextField]!
     var lbls : [UILabel]!
     var nextBtn : UIButton!
@@ -95,7 +110,7 @@ class PersonDetailScreenGenerator {
         
         // Make UITextField readonly
         for v in vals {
-            v.isUserInteractionEnabled = false
+            v.isUserInteractionEnabled = true
         }
         
         //
@@ -158,6 +173,18 @@ class PersonDetailScreenGenerator {
         trConst.isActive = true
     }
     
+    func setStatusSecContraints() {
+        statusSecView.translatesAutoresizingMaskIntoConstraints = false
+        let tpConst1 = statusSecView.topAnchor.constraint(equalTo: buttonSecView.bottomAnchor)
+        let lCont1 = detailSecView.leadingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.leadingAnchor)
+        let trConst1 = buttonSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
+        statusSecView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
+        statusSecView.isLayoutMarginsRelativeArrangement = true
+        tpConst1.isActive = true
+        trConst1.isActive = true
+        lCont1.isActive = true
+    }
+    
     func generate() {
         //
         titleSecView = TitleGenerator().generate()
@@ -170,6 +197,10 @@ class PersonDetailScreenGenerator {
         print("Button section was created. ")
         root.addSubview(detailSecView)
         root.addSubview(buttonSecView)
+        
+        statusSecView = StatusSectionGenerator().generate()
+        root.addSubview(statusSecView)
+        setStatusSecContraints()
 
         //
         setViewReference()
