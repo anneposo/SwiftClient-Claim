@@ -8,6 +8,24 @@
 
 import UIKit
 
+
+class TitleGenerator {
+    func generate() -> UIStackView {
+        let tStackView = UIStackView()
+        tStackView.axis = .vertical
+        tStackView.distribution = .fill
+        tStackView.spacing = 5
+        //
+        let tLbl = UILabel()
+        tLbl.text = "Please enter claim information"
+        tLbl.textColor = UIColor.black
+        tLbl.textAlignment = .center
+        tLbl.font = UIFont.boldSystemFont(ofSize: 16)
+        tStackView.addArrangedSubview(tLbl)
+        return tStackView
+    }
+}
+
 class PersonDetailSectionGenerator {
     func generate() -> UIStackView {
         let stackView = UIStackView()
@@ -48,6 +66,7 @@ class buttonSectionGenerator {
 class PersonDetailScreenGenerator {
     
     var root : UIView!
+    var titleSecView : UIStackView!
     var detailSecView : UIStackView!
     var buttonSecView : UIStackView!
     var vals : [UITextField]!
@@ -88,6 +107,18 @@ class PersonDetailScreenGenerator {
         }
     }
     
+    func setTitleSecConstraints() {
+        titleSecView.translatesAutoresizingMaskIntoConstraints = false
+        let topCont = titleSecView.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor)
+        let ldCont = titleSecView.leadingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.leadingAnchor)
+        let trlCont = titleSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
+        titleSecView.layoutMargins = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+        titleSecView.isLayoutMarginsRelativeArrangement = true
+        topCont.isActive = true
+        ldCont.isActive = true
+        trlCont.isActive = true
+    }
+    
     func setDetailSecConstraints() {
         for i in 0...lbls.count-1 {
             lbls[i].setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
@@ -107,7 +138,7 @@ class PersonDetailScreenGenerator {
             vals[i].setContentHuggingPriority(.defaultLow, for: .horizontal)
         }
         detailSecView.translatesAutoresizingMaskIntoConstraints = false
-        let tCont = detailSecView.topAnchor.constraint(equalTo: root.safeAreaLayoutGuide.topAnchor)
+        let tCont = detailSecView.topAnchor.constraint(equalTo: titleSecView.bottomAnchor)
         let lCont = detailSecView.leadingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.leadingAnchor)
         let trCont = detailSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
         detailSecView.layoutMargins = UIEdgeInsets(top: 40, left:20, bottom: 40, right: 20)
@@ -129,6 +160,10 @@ class PersonDetailScreenGenerator {
     
     func generate() {
         //
+        titleSecView = TitleGenerator().generate()
+        root.addSubview(titleSecView)
+        setTitleSecConstraints()
+        
         detailSecView = PersonDetailSectionGenerator().generate()
         print("Detail section was created. ")
         buttonSecView = buttonSectionGenerator().generate()
