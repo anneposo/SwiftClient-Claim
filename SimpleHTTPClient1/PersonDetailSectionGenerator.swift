@@ -68,8 +68,9 @@ class buttonSectionGenerator {
         bStackView.distribution = .fill
         bStackView.spacing = 5
         let btn = UIButton()
-        btn.setTitle(" Add ", for: .normal)
+        btn.setTitle("Add", for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0)
         btn.layer.borderWidth = 1
         btn.layer.borderColor = UIColor.blue.cgColor
         bStackView.addArrangedSubview(btn)
@@ -116,7 +117,7 @@ class PersonDetailScreenGenerator {
         //
         for sv in buttonSecView.arrangedSubviews {
             let btn = sv as! UIButton
-            if btn.titleLabel?.text == " Add " {
+            if btn.titleLabel?.text == "Add" {
                 nextBtn = btn 
             }
         }
