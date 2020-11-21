@@ -9,10 +9,8 @@
 import Foundation
 
 struct Claim : Codable {
-    var id : String
     var title : String
     var date : String
-    var isSolved : Bool
 }
 
 
@@ -46,6 +44,9 @@ class ClaimService {
                 let respStr = String(bytes: resp, encoding: .utf8)
                 print("The response data sent from the server is \(respStr!)")
                 //
+                OperationQueue.main.addOperation {
+                    self.viewController.refreshScreen()
+                }
             } else if let respError = error {
                 print("Server Error : \(respError)")
             }
@@ -118,9 +119,9 @@ class PersonService {
                 self.personList = try! JSONDecoder().decode([Person].self, from: respData)
                 print("The Person List : \(self.personList)")
                 //
-                OperationQueue.main.addOperation {
-                    self.viewController.refreshScreen(pObj: self.personList[self.currentIndx])
-                }
+                //OperationQueue.main.addOperation {
+                //    self.viewController.refreshScreen(pObj: self.personList[self.currentIndx])
+                //}
             }
         }
         //

@@ -10,20 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    func refreshScreen(pObj : Person) {
+    /*func refreshScreen(pObj : Person) {
         vals[0].text = pObj.firstName
         vals[1].text = pObj.lastName
         vals[2].text = pObj.ssn
+    }*/
+    
+    func refreshScreen() {
+        vals[0].text! = ""
+        vals[1].text! = ""
     }
 
     var lbls = [UILabel]()
     var vals = [UITextField]()
     var nextBtn : UIButton!
-    var pService : PersonService!
+    //var pService : PersonService!
+    var cService : ClaimService!
 
     @objc func goNextPerson(sender: UIButton) {
         //
-        refreshScreen(pObj: pService.getNext())
+        //refreshScreen(pObj: pService.getNext())
+        //let claim: String = vals[0].text!
+        //let date: String = vals[1].text!
+        cService.addClaim(cObj: Claim(title: vals[0].text!, date: vals[1].text!))
+        refreshScreen()
     }
 
     /*

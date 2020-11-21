@@ -10,14 +10,18 @@ import UIKit
 
 class DetailViewController : ViewController {
 
-    override func refreshScreen(pObj: Person) {
+    //override func refreshScreen(pObj: Person) {
+    override func refreshScreen() {
         //
-        detailScreenGenerator.vals[0].text = pObj.firstName
-        detailScreenGenerator.vals[1].text = pObj.lastName
+        //detailScreenGenerator.vals[0].text = pObj.firstName
+        //detailScreenGenerator.vals[1].text = pObj.lastName
         //detailScreenGenerator.vals[2].text = pObj.ssn
-        
+        detailScreenGenerator.vals[0].text = ""
+        detailScreenGenerator.vals[1].text = ""
+        print("val1: \(detailScreenGenerator.vals[0])")
+        print("val2: \(detailScreenGenerator.vals[1])")
         // Enable/Disable the button
-        detailScreenGenerator.nextBtn.isEnabled = !pService.isLastEntry()
+        detailScreenGenerator.nextBtn.isEnabled = true
         // Change the brightness if needed
         /*if detailScreenGenerator.nextBtn.isEnabled {
             detailScreenGenerator.nextBtn.backgroundColor = detailScreenGenerator.nextBtn.backgroundColor?.withAlphaComponent(1.0)
@@ -38,8 +42,9 @@ class DetailViewController : ViewController {
         detailScreenGenerator.generate()
         
         // 2. Prepare data
-        pService = PersonService(vc : self)
-        pService.getAll()
+        //pService = PersonService(vc : self)
+        //pService.getAll()
+        cService = ClaimService(vc: self)
         
         // 3. Set the event handling
         let nBtn = detailScreenGenerator.nextBtn
