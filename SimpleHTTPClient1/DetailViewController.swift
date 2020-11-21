@@ -37,13 +37,13 @@ class DetailViewController : ViewController {
         refreshScreen()
     }
 
-    var detailScreenGenerator : PersonDetailScreenGenerator!
+    var detailScreenGenerator : ClaimDetailScreenGenerator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //1. Create screen
-        detailScreenGenerator = PersonDetailScreenGenerator(v: view)
+        detailScreenGenerator = ClaimDetailScreenGenerator(v: view)
         print("Screen generator initialized. ")
         detailScreenGenerator.generate()
         
