@@ -29,13 +29,16 @@ class TitleGenerator {
 class StatusSectionGenerator {
     func generate() -> UIStackView {
         let stStackView = UIStackView()
-        stStackView.axis = .horizontal
+        stStackView.axis = .vertical
         stStackView.distribution = .fill
         stStackView.spacing = 5
-        //
-        let stLbl = UILabel()
-        stLbl.text = "Status: "
-        stStackView.addArrangedSubview(stLbl)
+        
+        var vGenerator : FieldValueViewGenerator!
+        var sView : UIStackView!
+        vGenerator = FieldValueViewGenerator(n:"Status: ")
+        sView = vGenerator.generate()
+        stStackView.addArrangedSubview(sView)
+        
         return stStackView
     }
 }
@@ -87,11 +90,32 @@ class ClaimDetailScreenGenerator {
     var statusSecView : UIStackView!
     var vals : [UITextField]!
     var lbls : [UILabel]!
+    var stLbl : [UILabel]!
+    var statusMsg : [UITextField]!
     var nextBtn : UIButton!
     
     init(v : UIView) {
         root = v
     }
+    
+    func setStatusReference() {
+        stLbl = [UILabel]()
+        statusMsg = [UITextField]()
+        
+        for sv in statusSecView.arrangedSubviews {  // 3 of them
+            let innerStackView = sv as! UIStackView
+            for ve in innerStackView.arrangedSubviews { // 2 of them
+                if ve is UITextField {
+                    statusMsg.append(ve as! UITextField)
+                } else {
+                    stLbl.append(ve as! UILabel)
+                }
+            }
+        }
+        statusMsg[0].isUserInteractionEnabled = false
+        statusMsg[0].backgroundColor = UIColor.clear
+    }
+    
 
     func setViewReference() {
         vals = [UITextField]()
@@ -175,11 +199,25 @@ class ClaimDetailScreenGenerator {
     }
     
     func setStatusSecContraints() {
+        stLbl[0].setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        stLbl[0].setContentHuggingPriority(.defaultHigh, for: .horizontal)
+
+        //let constr = lbls[0].widthAnchor.constraint(equalToConstant: root.frame.width * 0.25)
+        //constr.isActive = true
+        //
+
+        stLbl[0].translatesAutoresizingMaskIntoConstraints = false
+        let constr = stLbl[0].trailingAnchor.constraint(equalTo: stLbl[0].trailingAnchor)
+        constr.isActive = true
+
+        //
+        statusMsg[0].setContentHuggingPriority(.defaultLow, for: .horizontal)
+        
         statusSecView.translatesAutoresizingMaskIntoConstraints = false
         let tpConst1 = statusSecView.topAnchor.constraint(equalTo: buttonSecView.bottomAnchor)
         let lCont1 = detailSecView.leadingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.leadingAnchor)
         let trConst1 = buttonSecView.trailingAnchor.constraint(equalTo: root.safeAreaLayoutGuide.trailingAnchor)
-        statusSecView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
+        statusSecView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
         statusSecView.isLayoutMarginsRelativeArrangement = true
         tpConst1.isActive = true
         trConst1.isActive = true
@@ -201,11 +239,13 @@ class ClaimDetailScreenGenerator {
         
         statusSecView = StatusSectionGenerator().generate()
         root.addSubview(statusSecView)
+        setStatusReference()
         setStatusSecContraints()
 
         //
         setViewReference()
         print("setViewReference() called.")
+
         
         // set constraints for detailSecView
         setDetailSecConstraints()

@@ -9,34 +9,40 @@
 import UIKit
 
 class DetailViewController : ViewController {
+    
+    var claimTitle : String = ""
 
-    //override func refreshScreen(pObj: Person) {
     override func refreshScreen() {
-        //
+        // update status message
+        if cService.status == true {
+            detailScreenGenerator.statusMsg[0].text = "Claim \(claimTitle) was successfully created."
+        } else {
+            detailScreenGenerator.statusMsg[0].text = "Claim \(claimTitle) failed to be created."
+        }
+        
+        // clear textfield boxes
         detailScreenGenerator.vals[0].text = ""
         detailScreenGenerator.vals[1].text = ""
+        
         // Enable/Disable the button
         detailScreenGenerator.nextBtn.isEnabled = true
-        // Change the brightness if needed
-        /*if detailScreenGenerator.nextBtn.isEnabled {
-            detailScreenGenerator.nextBtn.backgroundColor = detailScreenGenerator.nextBtn.backgroundColor?.withAlphaComponent(1.0)
-        } else {
-            detailScreenGenerator.nextBtn.backgroundColor = detailScreenGenerator.nextBtn.backgroundColor?.withAlphaComponent(0.3)
-        }*/
-        
     }
     
     @objc func addClaimBtnAction(sender: UIButton) {
-        //var cService : ClaimService!
         
-        let claim: String = detailScreenGenerator.vals[0].text!
+        claimTitle = detailScreenGenerator.vals[0].text!
         let date: String = detailScreenGenerator.vals[1].text!
-        print("input claim: \(claim)")
+        print("input claim: \(claimTitle)")
         print("input date: \(date)")
-        cService.addClaim(cObj: Claim(title: claim, date: date))
+        
+        // creates claim object from user input and calls REST add service
+        cService.addClaim(cObj: Claim(title: claimTitle, date: date))
+        print("status: \(cService.status)")
+        
+        // update screen
         refreshScreen()
     }
-
+    
     var detailScreenGenerator : ClaimDetailScreenGenerator!
     
     override func viewDidLoad() {

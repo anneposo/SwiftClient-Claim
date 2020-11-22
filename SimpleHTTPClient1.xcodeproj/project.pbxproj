@@ -7,33 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F73033525690C1600AB5AAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F73033425690C1600AB5AAC /* ViewController.swift */; };
 		D27F8DFB2548FC9D0025712A /* FieldValueViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8DFA2548FC9D0025712A /* FieldValueViewGenerator.swift */; };
-		D27F8DFD254902EA0025712A /* PersonDetailSectionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8DFC254902EA0025712A /* PersonDetailSectionGenerator.swift */; };
-		D27F8DFF254C6E600025712A /* LabelColumnGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8DFE254C6E600025712A /* LabelColumnGenerator.swift */; };
-		D27F8E01254C70B20025712A /* ValueColumnGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8E00254C70B20025712A /* ValueColumnGenerator.swift */; };
+		D27F8DFD254902EA0025712A /* ClaimDetailSectionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8DFC254902EA0025712A /* ClaimDetailSectionGenerator.swift */; };
 		D27F8E432552FB520025712A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27F8E422552FB520025712A /* DetailViewController.swift */; };
 		D282F13F252D4F510082965C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282F13E252D4F510082965C /* AppDelegate.swift */; };
-		D282F141252D4F510082965C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282F140252D4F510082965C /* ViewController.swift */; };
 		D282F144252D4F510082965C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D282F142252D4F510082965C /* Main.storyboard */; };
 		D282F146252D4F580082965C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D282F145252D4F580082965C /* Assets.xcassets */; };
 		D282F149252D4F580082965C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D282F147252D4F580082965C /* LaunchScreen.storyboard */; };
-		D282F151252D4FC70082965C /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282F150252D4FC70082965C /* PersonService.swift */; };
+		D282F151252D4FC70082965C /* ClaimService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282F150252D4FC70082965C /* ClaimService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F73033425690C1600AB5AAC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D27F8DFA2548FC9D0025712A /* FieldValueViewGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValueViewGenerator.swift; sourceTree = "<group>"; };
-		D27F8DFC254902EA0025712A /* PersonDetailSectionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailSectionGenerator.swift; sourceTree = "<group>"; };
-		D27F8DFE254C6E600025712A /* LabelColumnGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColumnGenerator.swift; sourceTree = "<group>"; };
-		D27F8E00254C70B20025712A /* ValueColumnGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueColumnGenerator.swift; sourceTree = "<group>"; };
+		D27F8DFC254902EA0025712A /* ClaimDetailSectionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimDetailSectionGenerator.swift; sourceTree = "<group>"; };
 		D27F8E422552FB520025712A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D282F13B252D4F510082965C /* SimpleHTTPClient1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleHTTPClient1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D282F13E252D4F510082965C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D282F140252D4F510082965C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D282F143252D4F510082965C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D282F145252D4F580082965C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D282F148252D4F580082965C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D282F14A252D4F580082965C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D282F150252D4FC70082965C /* PersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
+		D282F150252D4FC70082965C /* ClaimService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClaimService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,17 +62,15 @@
 		D282F13D252D4F510082965C /* SimpleHTTPClient1 */ = {
 			isa = PBXGroup;
 			children = (
-				D282F150252D4FC70082965C /* PersonService.swift */,
+				D282F150252D4FC70082965C /* ClaimService.swift */,
 				D282F13E252D4F510082965C /* AppDelegate.swift */,
-				D282F140252D4F510082965C /* ViewController.swift */,
+				8F73033425690C1600AB5AAC /* ViewController.swift */,
 				D282F142252D4F510082965C /* Main.storyboard */,
 				D282F145252D4F580082965C /* Assets.xcassets */,
 				D282F147252D4F580082965C /* LaunchScreen.storyboard */,
 				D282F14A252D4F580082965C /* Info.plist */,
 				D27F8DFA2548FC9D0025712A /* FieldValueViewGenerator.swift */,
-				D27F8DFC254902EA0025712A /* PersonDetailSectionGenerator.swift */,
-				D27F8DFE254C6E600025712A /* LabelColumnGenerator.swift */,
-				D27F8E00254C70B20025712A /* ValueColumnGenerator.swift */,
+				D27F8DFC254902EA0025712A /* ClaimDetailSectionGenerator.swift */,
 				D27F8E422552FB520025712A /* DetailViewController.swift */,
 			);
 			path = SimpleHTTPClient1;
@@ -153,12 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D27F8DFF254C6E600025712A /* LabelColumnGenerator.swift in Sources */,
-				D282F141252D4F510082965C /* ViewController.swift in Sources */,
-				D27F8E01254C70B20025712A /* ValueColumnGenerator.swift in Sources */,
-				D27F8DFD254902EA0025712A /* PersonDetailSectionGenerator.swift in Sources */,
+				8F73033525690C1600AB5AAC /* ViewController.swift in Sources */,
+				D27F8DFD254902EA0025712A /* ClaimDetailSectionGenerator.swift in Sources */,
 				D282F13F252D4F510082965C /* AppDelegate.swift in Sources */,
-				D282F151252D4FC70082965C /* PersonService.swift in Sources */,
+				D282F151252D4FC70082965C /* ClaimService.swift in Sources */,
 				D27F8DFB2548FC9D0025712A /* FieldValueViewGenerator.swift in Sources */,
 				D27F8E432552FB520025712A /* DetailViewController.swift in Sources */,
 			);

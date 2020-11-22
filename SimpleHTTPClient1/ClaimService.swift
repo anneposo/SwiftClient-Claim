@@ -20,6 +20,7 @@ class ClaimService {
     
     var viewController : ViewController
     var claimList : [Claim] = [Claim]()
+    var status : Bool = true
     
     func addClaim(cObj : Claim) {
         // Implement logic using Async HTTP client API (POST method)
@@ -36,12 +37,14 @@ class ClaimService {
                 // type of resp is Data
                 let respStr = String(bytes: resp, encoding: .utf8)
                 print("The response data sent from the server is \(respStr!)")
+                self.status = true
                 //
                 OperationQueue.main.addOperation {
                     self.viewController.refreshScreen()
                 }
             } else if let respError = error {
                 print("Server Error : \(respError)")
+                self.status = false
             }
         }
         task.resume()
